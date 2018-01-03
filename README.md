@@ -1,6 +1,8 @@
 # Theory Of Computation Project 2017
 
-It's a telegram bot based on a finite state machine
+It's a telegram bot based on a finite state machine.
+有一位有錢人在房裡被殺害了，警方經過一番努力搜查，將John, Sam, Mary三位嫌疑犯抓了起來。
+得知他們的證詞後，需要由你來破解這樁密室殺人案件！這是一款邏輯思考遊戲，誰才是真正的兇手？
 
 ## Setup
 
