@@ -16,7 +16,7 @@ python3 app.py
 Run Telegram, find bot @SunSJ
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
+![fsm](./img/show-fsm1.png)
 
 ## Usage
 The initial state is set to `user`.
