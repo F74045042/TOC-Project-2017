@@ -7,37 +7,84 @@ from flask import Flask, request, send_file
 from fsm import TocMachine
 
 
-API_TOKEN = 'Your Telegram API Token'
-WEBHOOK_URL = 'Your Webhook URL'
+API_TOKEN = '392749767:AAGxUv82yrs-tvNbQvVj0EP2T_RwPGj8C2k'
+WEBHOOK_URL = 'https://fc5dac28.ngrok.io/hook'
 
 app = Flask(__name__)
 bot = telegram.Bot(token=API_TOKEN)
 machine = TocMachine(
     states=[
         'user',
-        'state1',
-        'state2'
+        'play',
+        'ask',
+        'arrest',
+        'John',
+        'Sam',
+        'Mary'
     ],
     transitions=[
         {
             'trigger': 'advance',
             'source': 'user',
-            'dest': 'state1',
-            'conditions': 'is_going_to_state1'
+            'dest': 'play',
+            'conditions': 'user_to_play'
         },
         {
             'trigger': 'advance',
-            'source': 'user',
-            'dest': 'state2',
-            'conditions': 'is_going_to_state2'
+            'source': 'play',
+            'dest': 'ask',
+            'conditions': 'play_to_ask'
+        }, 
+        {
+            'trigger': 'advance',
+            'source': 'play',
+            'dest': 'arrest',
+            'conditions': 'play_to_arrest'
+        }, 
+        {
+            'trigger': 'advance',
+            'source': 'arrest',
+            'dest': 'user',
+            'conditions': 'arrest_to_John'
+        }, 
+        {
+            'trigger': 'advance',
+            'source': 'arrest',
+            'dest': 'user',
+            'conditions': 'arrest_to_Sam'
+        }, 
+        {
+            'trigger': 'advance',
+            'source': 'arrest',
+            'dest': 'user',
+            'conditions': 'arrest_to_Mary'
+        }, 
+        {
+            'trigger': 'advance',
+            'source': 'ask',
+            'dest': 'John',
+            'conditions': 'ask_to_John'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'ask',
+            'dest': 'Sam',
+            'conditions': 'ask_to_Sam'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'ask',
+            'dest': 'Mary',
+            'conditions': 'ask_to_Mary'
         },
         {
             'trigger': 'go_back',
             'source': [
-                'state1',
-                'state2'
+                'John',
+                'Sam',
+                'Mary'
             ],
-            'dest': 'user'
+            'dest': 'play'
         }
     ],
     initial='user',

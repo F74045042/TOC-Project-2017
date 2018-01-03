@@ -1,61 +1,35 @@
-# TOC Project 2017
+# Theory Of Computation Project 2017
 
-Template Code for TOC Project 2017
-
-A telegram bot based on a finite state machine
+It's a telegram bot based on a finite state machine
 
 ## Setup
 
-### Prerequisite
+### Requirement
 * Python 3
-
-#### Install Dependency
-```sh
-pip install -r requirements.txt
-```
-
-* pygraphviz (For visualizing Finite State Machine)
-    * [Setup pygraphviz on Ubuntu](http://www.jianshu.com/p/a3da7ecc5303)
-
-### Secret Data
-
-`API_TOKEN` and `WEBHOOK_URL` in app.py **MUST** be set to proper values.
-Otherwise, you might not be able to run your code.
-
-### Run Locally
-You can either setup https server or using `ngrok` as a proxy.
-
-**`ngrok` would be used in the following instruction**
-
-```sh
-ngrok http 5000
-```
-
-After that, `ngrok` would generate a https URL.
-
-You should set `WEBHOOK_URL` (in app.py) to `your-https-URL/hook`.
 
 #### Run the sever
 
 ```sh
 python3 app.py
 ```
+### Run
+Run Telegram, find bot @SunSJ
 
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
 
 ## Usage
 The initial state is set to `user`.
-
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
-
+Type `/play` to triggered to `play` state.
 * user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
-
+    * Input: "/play"
+        * Go to play state
+        * Input "ask"
+            * Input "'name' to get some useful information"
+                * Go back to play state
+        * Input "arrest"
+            * Input "'name' to arrest them."
+                * Go back to user state.
 
 ## Author
-[Lee-W](https://github.com/Lee-W)
+[SunSJ](https://github.com/F74045042)
